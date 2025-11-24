@@ -3,9 +3,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
-export default defineConfig({
+// Use root base when serving locally, and GitHub Pages base for production builds
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: '/United-Pharmacy-LMS-Automation1/',
+  base: command === 'serve' ? '/' : '/United-Pharmacy-LMS-Automation1/',
   optimizeDeps: {
     include: ['xlsx'],
   },
@@ -15,4 +16,4 @@ export default defineConfig({
       transformMixedEsModules: true,
     }
   }
-});
+}));
