@@ -72,7 +72,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="bg-white p-1 rounded-lg shadow-md">
-               <img src="/logo.png" alt="United Pharmacy Logo" className="h-12 w-12 object-contain" />
+               <img src={`${import.meta.env.BASE_URL}logo.png`} alt="United Pharmacy Logo" className="h-12 w-12 object-contain" />
             </div>
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-white">United Pharmacy</h1>
