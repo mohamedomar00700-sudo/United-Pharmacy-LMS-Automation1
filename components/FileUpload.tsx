@@ -42,8 +42,8 @@ const FileUpload: React.FC<FileUploadProps> = ({ type, onFileSelect, isUploaded,
   return (
     <div
       className={`relative flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer transition-colors duration-200
-        ${isUploaded ? 'border-green-500 bg-green-50' : 'border-gray-300 hover:border-[#F4A460] hover:bg-orange-50'}
-        ${dragActive ? 'border-[#F4A460] bg-orange-50' : ''}
+        ${isUploaded ? 'border-[#20b2aa] bg-teal-50' : 'border-gray-300 hover:border-[#ff9500] hover:bg-orange-50'}
+        ${dragActive ? 'border-[#ff9500] bg-orange-50' : ''}
       `}
       onDragEnter={handleDrag}
       onDragLeave={handleDrag}
@@ -60,15 +60,15 @@ const FileUpload: React.FC<FileUploadProps> = ({ type, onFileSelect, isUploaded,
       />
       
       {isUploaded ? (
-        <div className="flex flex-col items-center text-green-700 animate-in fade-in zoom-in duration-300">
+        <div className="flex flex-col items-center text-[#20b2aa] animate-in fade-in zoom-in duration-300">
           <CheckCircle className="w-8 h-8 mb-2" />
           <p className="text-sm font-semibold">{fileName}</p>
           <p className="text-xs opacity-75">Ready to process</p>
         </div>
       ) : (
         <div className="flex flex-col items-center text-gray-500">
-          <Upload className="w-8 h-8 mb-2 text-gray-400" />
-          <p className="text-sm font-semibold text-center px-2">{type}</p>
+          <Upload className="w-8 h-8 mb-2 text-[#1e3a5f]" />
+          <p className="text-sm font-semibold text-center px-2 text-[#1e3a5f]">{type}</p>
           <p className="text-xs opacity-75 mt-1">Drag & drop or click to upload</p>
         </div>
       )}

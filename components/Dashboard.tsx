@@ -101,12 +101,12 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
         {/* Filters */}
         <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full xl:w-auto">
           <div className="flex items-center space-x-2">
-            <Filter className="w-5 h-5 text-[#F4A460]" />
-            <span className="font-semibold text-gray-700">Filters:</span>
+            <Filter className="w-5 h-5 text-[#20b2aa]" />
+            <span className="font-semibold text-[#1e3a5f]">Filters:</span>
           </div>
           
           <select 
-            className="border rounded-md px-3 py-1.5 text-sm bg-gray-50 focus:ring-2 focus:ring-[#F4A460] outline-none w-full sm:w-auto"
+            className="border-2 border-[#20b2aa] rounded-md px-3 py-1.5 text-sm bg-gray-50 focus:ring-2 focus:ring-[#ff9500] outline-none w-full sm:w-auto"
             value={districtFilter}
             onChange={(e) => setDistrictFilter(e.target.value)}
           >
@@ -114,7 +114,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
           </select>
 
           <select 
-            className="border rounded-md px-3 py-1.5 text-sm bg-gray-50 focus:ring-2 focus:ring-[#F4A460] outline-none w-full sm:w-auto"
+            className="border-2 border-[#20b2aa] rounded-md px-3 py-1.5 text-sm bg-gray-50 focus:ring-2 focus:ring-[#ff9500] outline-none w-full sm:w-auto"
             value={supervisorFilter}
             onChange={(e) => setSupervisorFilter(e.target.value)}
           >
@@ -126,7 +126,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
         <div className="flex flex-wrap justify-center gap-3 w-full xl:w-auto">
           <button 
             onClick={() => setShowReminderModal(true)}
-            className="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm text-sm"
+            className="flex items-center space-x-2 bg-[#20b2aa] hover:bg-teal-700 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm text-sm"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Reminders</span>
@@ -134,7 +134,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
 
           <button 
             onClick={() => generatePDF(stats, filteredData)}
-            className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm text-sm"
+            className="flex items-center space-x-2 bg-[#1e3a5f] hover:bg-blue-900 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm text-sm"
           >
             <FileText className="w-4 h-4" />
             <span>PDF Summary</span>
@@ -142,7 +142,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
 
           <button 
             onClick={() => generateExcelFile(filteredData)}
-            className="flex items-center space-x-2 bg-[#F4A460] hover:bg-orange-500 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm text-sm"
+            className="flex items-center space-x-2 bg-gradient-to-r from-[#ff9500] to-[#ffc107] hover:from-[#ff8c00] hover:to-[#ffb300] text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm text-sm"
           >
             <Download className="w-4 h-4" />
             <span>Excel Report</span>
@@ -151,38 +151,38 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
       </div>
 
       {/* Summarization Status Table */}
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
-        <div className="bg-[#F4A460] text-white px-6 py-3 font-bold text-lg">
+      <div className="bg-white rounded-xl shadow-sm overflow-hidden border-2 border-[#20b2aa]">
+        <div className="bg-gradient-to-r from-[#1e3a5f] to-[#20b2aa] text-white px-6 py-3 font-bold text-lg">
           Summarization Status
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm">
             <thead>
-              <tr className="bg-[#F4A460] text-white border-t border-orange-300">
+              <tr className="bg-gradient-to-r from-[#20b2aa] to-[#1e3a5f] text-white border-t border-teal-300">
                 <th className="px-6 py-2 text-left w-1/2">Summarization Status</th>
                 <th className="px-6 py-2 text-center w-1/4">Number Count</th>
                 <th className="px-6 py-2 text-center w-1/4">Percentage</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              <tr className="hover:bg-orange-50">
+              <tr className="hover:bg-teal-50">
                 <td className="px-6 py-3 font-medium text-gray-700">Number Of Student</td>
-                <td className="px-6 py-3 text-center font-bold text-[#F4A460]">{stats.totalPharmacists}</td>
+                <td className="px-6 py-3 text-center font-bold text-[#20b2aa]">{stats.totalPharmacists}</td>
                 <td className="px-6 py-3 text-center text-gray-600">100%</td>
               </tr>
-              <tr className="hover:bg-orange-50">
+              <tr className="hover:bg-teal-50">
                 <td className="px-6 py-3 font-medium text-gray-700">Number Of Student Who Completed</td>
-                <td className="px-6 py-3 text-center font-bold text-green-600">{(stats as any).totalCompleted}</td>
+                <td className="px-6 py-3 text-center font-bold text-[#20b2aa]">{(stats as any).totalCompleted}</td>
                 <td className="px-6 py-3 text-center text-gray-600">{fmtPct((stats as any).totalCompleted, stats.totalPharmacists)}</td>
               </tr>
-              <tr className="hover:bg-orange-50">
+              <tr className="hover:bg-teal-50">
                 <td className="px-6 py-3 font-medium text-gray-700">Number OF Student Who In Progress</td>
-                <td className="px-6 py-3 text-center font-bold text-orange-500">{(stats as any).totalInProgress}</td>
+                <td className="px-6 py-3 text-center font-bold text-[#ff9500]">{(stats as any).totalInProgress}</td>
                 <td className="px-6 py-3 text-center text-gray-600">{fmtPct((stats as any).totalInProgress, stats.totalPharmacists)}</td>
               </tr>
-              <tr className="hover:bg-orange-50">
+              <tr className="hover:bg-teal-50">
                 <td className="px-6 py-3 font-medium text-gray-700">Number Of Students Who Did Not Started</td>
-                <td className="px-6 py-3 text-center font-bold text-gray-400">{(stats as any).totalNotStarted}</td>
+                <td className="px-6 py-3 text-center font-bold text-[#1e3a5f]">{(stats as any).totalNotStarted}</td>
                 <td className="px-6 py-3 text-center text-gray-600">{fmtPct((stats as any).totalNotStarted, stats.totalPharmacists)}</td>
               </tr>
             </tbody>
@@ -193,10 +193,10 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
       {/* Charts Area */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Bar Chart: Completion by District */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm">
+        <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border-2 border-[#20b2aa]/20">
           <div className="flex justify-between items-center mb-4">
-             <h3 className="text-lg font-bold text-gray-800">Completion by District (Top 10)</h3>
-             <span className="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded border">Click bar to filter table</span>
+             <h3 className="text-lg font-bold text-[#1e3a5f]">Completion by District (Top 10)</h3>
+             <span className="text-xs text-gray-400 bg-[#20b2aa]/5 px-2 py-1 rounded border border-[#20b2aa]/30">Click bar to filter table</span>
           </div>
           
           <div className="h-80">
@@ -210,7 +210,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
                 <Bar 
                   dataKey="Completed" 
                   stackId="a" 
-                  fill="#10B981" 
+                  fill="#20b2aa" 
                   radius={[0, 4, 4, 0]} 
                   cursor="pointer"
                   onClick={handleChartClick}
@@ -218,7 +218,7 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
                 <Bar 
                   dataKey="Pending" 
                   stackId="a" 
-                  fill="#E5E7EB" 
+                  fill="#ff9500" 
                   radius={[0, 4, 4, 0]} 
                   cursor="pointer"
                   onClick={handleChartClick}
@@ -229,8 +229,8 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
         </div>
 
         {/* Pie Chart: Overall Status */}
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <h3 className="text-lg font-bold text-gray-800 mb-4">Overall Status</h3>
+        <div className="bg-white p-6 rounded-xl shadow-sm border-2 border-[#20b2aa]/20">
+          <h3 className="text-lg font-bold text-[#1e3a5f] mb-4">Overall Status</h3>
           <div className="h-80 flex items-center justify-center">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -244,9 +244,9 @@ const Dashboard: React.FC<DashboardProps> = ({ data }) => {
                   paddingAngle={5}
                   dataKey="value"
                 >
-                  <Cell fill="#10B981" /> {/* Completed */}
-                  <Cell fill="#F4A460" /> {/* In Progress */}
-                  <Cell fill="#E5E7EB" /> {/* Not Started */}
+                  <Cell fill="#20b2aa" /> {/* Completed */}
+                  <Cell fill="#ff9500" /> {/* In Progress */}
+                  <Cell fill="#1e3a5f" /> {/* Not Started */}
                 </Pie>
                 <RechartsTooltip />
                 <Legend verticalAlign="bottom" height={36}/>
